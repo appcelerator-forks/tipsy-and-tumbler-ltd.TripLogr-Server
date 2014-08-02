@@ -91,7 +91,7 @@ var SampleApp = function() {
             var data = provider.getTrips();
 
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"response": "Welcome to Openshift " + user_id + "!"} );
+            res.json( data );
         };
     };
 
