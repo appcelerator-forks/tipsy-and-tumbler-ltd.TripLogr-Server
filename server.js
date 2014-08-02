@@ -12,6 +12,7 @@ var SampleApp = function() {
     //  Scope.
     var self = this;
     var DataProvider = require('./provider').Provider;
+    var provider = = new DataProvider();
 
 
     /*  ================================================================  */
@@ -87,8 +88,8 @@ var SampleApp = function() {
 
         self.routes['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
-            var data = DataProvider.getTrips();
-            
+            var data = provider.getTrips();
+
             res.setHeader('Content-Type', 'application/json');
             res.json( {"response": "Welcome to Openshift " + user_id + "!"} );
         };
