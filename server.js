@@ -75,23 +75,33 @@ var SampleApp = function() {
      */
     self.createRoutes = function() {
         self.routes = { };
+        self.routes.get = { };
+        self.routes.post = { };
 
         //self.routes['/asciimo'] = function(req, res) {
             //var link = "http://i.imgur.com/kmbjB.png";
             //res.send("<html><body><img src='" + link + "'></body></html>");
         //};
 
-        self.routes['/'] = function(req, res) {
+        self.routes.get['/'] = function(req, res) {
             res.setHeader('Content-Type', 'application/json');
             res.json( {"response": "Welcome to Openshift!"} );
         };
 
-        self.routes['/trips/:id'] = function(req, res) {
+        self.routes.get['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
             var data = provider.getTrips();
 
             res.setHeader('Content-Type', 'application/json');
             res.json( data );
+        };
+
+        self.routes.post['/trips/:id'] = function(req, res) {
+            var user_id = req.params.id;
+            var success = provider.insertTrip(user_id, req.body.startLat, req.body.startLng, req.body.endLat, req.body.endLng, req.body.purpose, req.body.tripDate);
+
+            res.setHeader('Content-Type', 'application/json');
+            res.json( {"success": success} );
         };
     };
 
@@ -105,8 +115,12 @@ var SampleApp = function() {
         self.app = express.createServer();
 
         //  Add handlers for the app (from the routes).
-        for (var r in self.routes) {
-            self.app.get(r, self.routes[r]);
+        for (var r in self.routes.get) {
+            self.app.get(r, self.routes.get[r]);
+        }
+
+        for (var r in self.routes.post) {
+            self.app.post(r, self.routes.post[r]);
         }
     };
 

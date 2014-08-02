@@ -33,10 +33,13 @@ Provider = function(host, port) {
 Provider.prototype.getTrips = function(){
 	// similar syntax as the Mongo command-line interface
 	// log each of the first ten docs in the collection
-	db.trips.find({}).limit(50).forEach(function(err, doc) {
-	  if (err) throw err;
-	  if (doc) { console.dir(doc); }
-	});
+	var data = db.trips.find({}).limit(500);
+	return data;
+};
+
+Provider.prototype.insertTrip = function(startLat, startLng, endLat, endLng, purpose, tripDate){
+	 db.trips.save({ startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate });
+	 return true;
 };
 
 //finally,
