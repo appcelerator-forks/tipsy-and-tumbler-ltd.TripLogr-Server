@@ -12,7 +12,7 @@ var SampleApp = function() {
     //  Scope.
     var self = this;
     var Provider = require('./provider').Provider;
-    var provider = = new Provider();
+    var provider = new Provider();
 
 
     /*  ================================================================  */
