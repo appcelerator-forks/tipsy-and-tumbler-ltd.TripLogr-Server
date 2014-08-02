@@ -1,10 +1,12 @@
 /*
  *
-*/
+//MongoDB connection information from OpenShift 
 var mongoUser = 'admin';
 var mongoPass = 'TKWna_bFsyaF';
 var dbName    = 'triplogr';
 var host    = 'mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/';
+*/
+
 
 // default to a 'localhost' configuration:
 var connection_string = '127.0.0.1:27017/triplogr';
