@@ -98,12 +98,12 @@ var SampleApp = function() {
 
         self.routes.post['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
-            var success = provider.insertTrip(user_id, req.param.startLat, req.param.startLng, req.param.endLat, req.param.endLng, req.param.purpose, req.param.tripDate);
+            //var success = provider.insertTrip(user_id, req.param.startLat, req.param.startLng, req.param.endLat, req.param.endLng, req.param.purpose, req.param.tripDate);
 
 
 
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"success": req.params.startLat} );
+            res.json( {"success": req.params} );
         };
     };
 
