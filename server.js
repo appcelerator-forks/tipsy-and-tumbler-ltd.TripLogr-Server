@@ -100,8 +100,10 @@ var SampleApp = function() {
             var user_id = req.params.id;
             var success = provider.insertTrip(user_id, req.param.startLat, req.param.startLng, req.param.endLat, req.param.endLng, req.param.purpose, req.param.tripDate);
 
+
+
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"success": success} );
+            res.json( {"success": req.param.startLat} );
         };
     };
 
