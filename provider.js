@@ -30,11 +30,18 @@ Provider = function(host, port) {
 	waypoints = db.collection('waypoints');
 };
 
-Provider.prototype.getTrips = function(){
+Provider.prototype.getTrips = function(cb){
+	var results = [];
 	// similar syntax as the Mongo command-line interface
 	// log each of the first ten docs in the collection
-	var data = db.trips.find({}).limit(500);
-	return data;
+	db.trips.find({}).limit(500).forEach(function(err, doc) {
+	  if (err) throw err;
+	  if (doc) { 
+	  	results.push(doc);
+	  }
+	});
+
+	cb(results);
 };
 
 Provider.prototype.insertTrip = function(startLat, startLng, endLat, endLng, purpose, tripDate){
