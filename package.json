@@ -1,7 +1,7 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "TripLogr",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "TripLogr Mobile Application",
   "keywords": [
     "OpenShift",
     "Node.js",
@@ -9,11 +9,11 @@
     "openshift"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Boydlee Pollentine",
+    "email": "boydlee@tipsyandtumbler.co.uk",
+    "url": "http://www.tipsyandtumbler.co.uk"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "http://www.tipsyandtumbler.co.uk/",
   "repository": {
     "type": "git",
     "url": "https://github.com/openshift/origin-server"
