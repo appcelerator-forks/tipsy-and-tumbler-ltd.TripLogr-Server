@@ -103,7 +103,7 @@ var SampleApp = function() {
 
 
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"success": req.param.startLat} );
+            res.json( {"success": req.params.startLat} );
         };
     };
 
