@@ -20,13 +20,14 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   process.env.OPENSHIFT_APP_NAME;
 }
 
-var db;
+var db, trips, waypoints;
 var mongojs = require('mongojs');
-var trips = db.collection('trips');
 
 
 Provider = function(host, port) {
     db = mongojs(connection_string, ['trips', 'waypoints']);
+	trips = db.collection('trips');
+	waypoints = db.collection('waypoints');
 };
 
 Provider.prototype.getTrips = function(){
