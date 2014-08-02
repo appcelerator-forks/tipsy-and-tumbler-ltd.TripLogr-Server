@@ -98,7 +98,7 @@ var SampleApp = function() {
 
         self.routes.post['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
-            var success = provider.insertTrip(user_id, req.body.startLat, req.body.startLng, req.body.endLat, req.body.endLng, req.body.purpose, req.body.tripDate);
+            var success = provider.insertTrip(user_id, req.param.startLat, req.param.startLng, req.param.endLat, req.param.endLng, req.param.purpose, req.param.tripDate);
 
             res.setHeader('Content-Type', 'application/json');
             res.json( {"success": success} );
