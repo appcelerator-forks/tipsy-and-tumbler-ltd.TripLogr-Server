@@ -88,6 +88,13 @@ var SampleApp = function() {
             res.json( {"response": "Welcome to Openshift!"} );
         };
 
+        self.routes.get['/trips'] = function(req, res) {
+            provider.getAllTrips(function(data){
+                res.setHeader('Content-Type', 'application/json');
+                res.json( data );
+            });
+        };
+
         self.routes.get['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
             provider.getTrips(user_id, function(data){

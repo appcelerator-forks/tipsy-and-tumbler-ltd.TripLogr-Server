@@ -30,6 +30,12 @@ Provider = function(host, port) {
 	waypoints = db.collection('waypoints');
 };
 
+Provider.prototype.getAllTrips = function(cb){
+	db.trips.find(function(err, docs) {
+	   cb(docs);
+	});
+};
+
 Provider.prototype.getTrips = function(user_id, cb){
 	var results = [];
 	// similar syntax as the Mongo command-line interface
