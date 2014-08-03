@@ -105,9 +105,9 @@ var SampleApp = function() {
 
         self.routes.post['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
-            provider.insertTrip(user_id, req.body.startLat, req.body.startLng, req.body.endLat, req.body.endLng, req.body.purpose, req.body.tripDate, function(cb){
+            provider.insertTrip(user_id, req.body.startLat, req.body.startLng, req.body.endLat, req.body.endLng, req.body.purpose, req.body.tripDate, function(success, doc){
                  res.setHeader('Content-Type', 'application/json');
-                 res.json( {"response": cb} );
+                 res.json( {"response": doc} );
             });
         };
 
