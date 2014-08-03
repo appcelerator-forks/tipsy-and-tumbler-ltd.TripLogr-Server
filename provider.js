@@ -35,7 +35,7 @@ Provider.prototype.getTrips = function(user_id, cb){
 	// similar syntax as the Mongo command-line interface
 	// log each of the first ten docs in the collection
 	// {user_id:user_id}
-	db.trips.find().limit(500).forEach(function(err, doc) {
+	db.trips.find({}).limit(500).forEach(function(err, doc) {
 	  if (err) throw err;
 	  if (doc) { 
 	  	results.push({
