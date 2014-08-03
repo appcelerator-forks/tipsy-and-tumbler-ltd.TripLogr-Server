@@ -118,7 +118,7 @@ var SampleApp = function() {
         };
 
         self.routes.post['/waypoints/:tripid'] = function(req, res) {
-            var trip_id = req.params.id;
+            var trip_id = req.params.tripid;
             var success = provider.insertWaypoint(trip_id, req.body.lat, req.body.lng);
             res.setHeader('Content-Type', 'application/json');
             res.json( {"response": success} );
