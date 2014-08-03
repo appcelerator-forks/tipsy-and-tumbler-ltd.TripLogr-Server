@@ -37,6 +37,9 @@ Provider.prototype.getTrips = function(user_id, cb){
 	db.trips.find({user_id:user_id}).limit(500).forEach(function(err, doc) {
 	  if (err) throw err;
 	  if (doc) { 
+	  	results.push({
+	  		test: 'me'
+	  	});
 
 	  	//push all the waypoitns in as a sub-object
 	  	doc.waypoints = [];
