@@ -41,13 +41,9 @@ Provider.prototype.getTrips = function(user_id, cb){
 	// similar syntax as the Mongo command-line interface
 	// log each of the first ten docs in the collection
 	// {user_id:user_id}
-	db.trips.find({}).limit(500).forEach(function(err, doc) {
+	db.trips.find({user_id:user_id}, function(err, doc) {
 	  if (err) throw err;
-	  if (doc) { 
-	  	results.push({
-	  		test: 'me'
-	  	});
-
+	  if (doc) {
 	  	//push all the waypoitns in as a sub-object
 	  	doc.waypoints = [];
 	  	db.waypoints.find({trip_id:{$eq:doc.trip_id}}).forEach(function(subErr, subDoc) {
@@ -63,8 +59,7 @@ Provider.prototype.getTrips = function(user_id, cb){
 };
 
 Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, tripDate){
-	 var tripId = Math.floor((Math.random() * 1000000) + 1);
-	 db.trips.save({trip_id: tripId, user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate });
+	 db.trips.save({user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate });
 	 return {
 	 	success: true,
 	 	trip_id: tripId
