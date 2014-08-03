@@ -103,7 +103,7 @@ var SampleApp = function() {
 
 
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"success": req.params} );
+            res.json( {"success": req.body} );
         };
     };
 
@@ -115,6 +115,8 @@ var SampleApp = function() {
     self.initializeServer = function() {
         self.createRoutes();
         self.app = express.createServer();
+        self.app.use(express.json());       // to support JSON-encoded bodies
+        self.app.use(express.urlencoded()); // to support URL-encoded bodies
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes.get) {
