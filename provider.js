@@ -43,7 +43,7 @@ Provider.prototype.getTrips = function(user_id, cb){
 	// {user_id:user_id}
 	db.trips.find({user_id:user_id}, function(err, docs) {
 	  if (err) throw err;
-	  cb(doc);
+	  cb(docs);
 
 
 	  /*if (doc) {
@@ -56,9 +56,9 @@ Provider.prototype.getTrips = function(user_id, cb){
 	  	//now push the document with waypoints
 	  	results.push(doc);
 	  }
-	});
 
 	cb(results);*/
+	});
 };
 
 Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, tripDate, cb){
