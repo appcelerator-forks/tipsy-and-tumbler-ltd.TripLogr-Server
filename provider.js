@@ -37,6 +37,14 @@ Provider.prototype.getTrips = function(user_id, cb){
 	db.trips.find({user_id:{$eq:user_id}}).limit(500).forEach(function(err, doc) {
 	  if (err) throw err;
 	  if (doc) { 
+
+	  	//push all the waypoitns in as a sub-object
+	  	doc.waypoints = [];
+	  	db.waypoints.find({trip_id:{$eq:doc.trip_id}}).forEach(function(subErr, subDoc) {
+	  		doc.waypoints.push(subDoc);
+	  	});
+
+	  	//now push the document with waypoints
 	  	results.push(doc);
 	  }
 	});
@@ -44,9 +52,20 @@ Provider.prototype.getTrips = function(user_id, cb){
 	cb(results);
 };
 
-Provider.prototype.insertTrip = function(startLat, startLng, endLat, endLng, purpose, tripDate){
-	 db.trips.save({ startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate });
-	 return true;
+Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, tripDate){
+	 var tripId = Math.floor((Math.random() * 1000000) + 1);
+	 db.trips.save({trip_id: tripId, user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate });
+	 return {
+	 	success: true,
+	 	trip_id: tripId
+	 };
+};
+
+Provider.prototype.insertWaypoint = function(tripId, lat, lng){
+	 db.trips.save({trip_id: tripId, lat:lat, lng: lng});
+	 return {
+	 	success: true
+	 };
 };
 
 //finally,

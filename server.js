@@ -99,11 +99,15 @@ var SampleApp = function() {
         self.routes.post['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
             var success = provider.insertTrip(user_id, req.body.startLat, req.body.startLng, req.body.endLat, req.body.endLng, req.body.purpose, req.body.tripDate);
-
-
-
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"success": success} );
+            res.json( {"response": success} );
+        };
+
+        self.routes.post['/waypoints/:tripid'] = function(req, res) {
+            var trip_id = req.params.id;
+            var success = provider.insertWaypoint(trip_id, req.body.lat, req.body.lng);
+            res.setHeader('Content-Type', 'application/json');
+            res.json( {"response": success} );
         };
     };
 
