@@ -90,7 +90,7 @@ var SampleApp = function() {
 
         self.routes.get['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;
-            provider.getTrips(function(data){
+            provider.getTrips(user_id, function(data){
                 res.setHeader('Content-Type', 'application/json');
                 res.json( data );
             });
