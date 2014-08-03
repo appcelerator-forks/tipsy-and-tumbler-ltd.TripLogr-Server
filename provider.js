@@ -47,7 +47,7 @@ Provider.prototype.getTrips = function(user_id, cb){
 	// {user_id:user_id}
 	db.trips.find({user_id:user_id}, function(err, docs) {
 	  if (err) throw err;
-	  if (docs.length > 0) {
+	  if (docs && docs.length > 0) {
 	  	
 	  	for(var i = 0; i < docs.length; i++) {
 		  	//push all the waypoitns in as a sub-object
@@ -58,6 +58,9 @@ Provider.prototype.getTrips = function(user_id, cb){
 		}
 
 		cb(docs);
+	  }
+	  else {
+	  	cb(docs);
 	  }
 	});
 };
