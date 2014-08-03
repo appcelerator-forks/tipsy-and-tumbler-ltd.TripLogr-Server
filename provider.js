@@ -41,9 +41,12 @@ Provider.prototype.getTrips = function(user_id, cb){
 	// similar syntax as the Mongo command-line interface
 	// log each of the first ten docs in the collection
 	// {user_id:user_id}
-	db.trips.find({user_id:user_id}, function(err, doc) {
+	db.trips.find({user_id:user_id}, function(err, docs) {
 	  if (err) throw err;
-	  if (doc) {
+	  cb(doc);
+
+
+	  /*if (doc) {
 	  	//push all the waypoitns in as a sub-object
 	  	doc.waypoints = [];
 	  	db.waypoints.find({trip_id:{$eq:doc.trip_id}}).forEach(function(subErr, subDoc) {
@@ -55,7 +58,7 @@ Provider.prototype.getTrips = function(user_id, cb){
 	  }
 	});
 
-	cb(results);
+	cb(results);*/
 };
 
 Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, tripDate, cb){
