@@ -59,13 +59,7 @@ Provider.prototype.getTrips = function(user_id, cb){
 };
 
 Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, tripDate, cb){
-	 db.trips.save({user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate },
-	 	function(response){
-	 		cb( {
-			 	success: true,
-			 	trip: response
-			 }_;
-		});
+	 db.trips.save({user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate },cb);
 };
 
 Provider.prototype.insertWaypoint = function(tripId, lat, lng){
