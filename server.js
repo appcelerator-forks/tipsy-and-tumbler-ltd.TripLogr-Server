@@ -86,12 +86,12 @@ var SampleApp = function() {
         self.routes.get['/'] = function(req, res) {
             res.setHeader('Content-Type', 'application/json');
             res.json( {"response": "Welcome to Openshift!"} );
-
+        };
 
         self.routes.get['/trips/cleardb'] = function(req, res) {
             provider.clearDB();
             res.setHeader('Content-Type', 'application/json');
-            res.json( {"success": true});
+            res.json( {"success": true });
         };
 
         self.routes.get['/trips'] = function(req, res) {
@@ -180,4 +180,3 @@ var SampleApp = function() {
 var zapp = new SampleApp();
 zapp.initialize();
 zapp.start();
-
