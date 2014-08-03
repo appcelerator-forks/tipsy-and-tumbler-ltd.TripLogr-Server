@@ -30,6 +30,11 @@ Provider = function(host, port) {
 	waypoints = db.collection('waypoints');
 };
 
+Provider.prototype.clearDB = function(){
+	db.trips.remove();
+	db.waypoints.remove();
+};
+
 Provider.prototype.getAllTrips = function(cb){
 	db.trips.find(function(err, docs) {
 	   cb(docs);
