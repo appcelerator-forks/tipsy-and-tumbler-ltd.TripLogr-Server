@@ -64,8 +64,8 @@ Provider.prototype.getTrips = function(user_id, cb){
 	});
 };
 
-Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, tripDate, cb){
-	 db.trips.insert({user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, tripDate: tripDate },cb);
+Provider.prototype.insertTrip = function(userId, startLat, startLng, endLat, endLng, purpose, odoEnd, distanceKM, tripDate, tripId, cb){
+	 db.trips.insert({user_id: userId, startLat:startLat, startLng: startLng, endLat: endLat, endLng: endLng, purpose: purpose, odometerEnd: odoEnd, distance: distanceKM, tripDate: tripDate, tripId: tripId },cb);
 };
 
 Provider.prototype.insertWaypoint = function(tripId, lat, lng){
