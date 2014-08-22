@@ -88,18 +88,18 @@ var SampleApp = function() {
             res.json( {"response": "Welcome to Openshift!"} );
         };
 
-        self.routes.get['/trips/cleardb'] = function(req, res) {
+        /*self.routes.get['/trips/cleardb'] = function(req, res) {
             provider.clearDB();
             res.setHeader('Content-Type', 'application/json');
             res.json( {"success": true });
-        };
+        };*/
 
-        self.routes.get['/trips'] = function(req, res) {
+        /*self.routes.get['/trips'] = function(req, res) {
             provider.getAllTrips(function(data){
                 res.setHeader('Content-Type', 'application/json');
                 res.json( data );
             });
-        };
+        };*/
 
         self.routes.get['/trips/:id'] = function(req, res) {
             var user_id = req.params.id;

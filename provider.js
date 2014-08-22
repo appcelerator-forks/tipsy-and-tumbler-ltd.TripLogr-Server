@@ -52,9 +52,8 @@ Provider.prototype.getTrips = function(user_id, cb){
 	  	for(var i = 0; i < docs.length; i++) {
 		  	//push all the waypoitns in as a sub-object
 		  	docs[i].waypoints = [];
-		  	db.waypoints.find({trip_id:{$eq:docs[i]._id}}).forEach(function(subErr, subDoc) {
-		  		docs[i].waypoints.push(subDoc);
-		  	});
+		  	//db.waypoints.find({trip_id:{$eq:docs[i]._id}}, function(subErr, subDocs){
+		  	//});
 		}
 
 		cb(docs);
